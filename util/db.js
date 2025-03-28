@@ -7,3 +7,5 @@ const connection = await mysql.createConnection({
     password:"1102717619",
     database:"node_adso_wili",
 });
+
+export default connection; // exportamos la conexion para usarla en otros archivos

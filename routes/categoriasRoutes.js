@@ -10,13 +10,14 @@ router.get('/',CategoriaController.getAllCategorias);
 
 // --------------------------------------------------------------------
 
-router.post('/',(req,res)=>{
-    console.log(req.body); // mostramos en consola lo que se envia desde postman
-    res.json("hi"); // devolvemos lo que se envia desde postman
-});
+router.post('/',CategoriaController.createCategoria); // creamos la ruta para crear una categoria}
+
+
+
 
 router.put('/:id',(req,res)=>{
     console.log(req.body); 
+    res.json("hi"); // devolvemos lo que se envia desde postman
 });
 
 
