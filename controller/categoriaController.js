@@ -21,5 +21,15 @@ class CategoriaController{
            res.status(500).json({error: error.message}); // si hay un error mostramos un mensaje en consola 
         }
     }
+    static actulizarCategoria = async (req,res)=>{
+        const {nombre,descripcion} = req.body; // obtenemos los datos del body
+        try {
+            const objcategoria = new Categoria(nombre,descripcion); 
+            objcategoria.update(id);// creamos un objeto de la clase Categoria
+
+        } catch (error) {
+            res.status(500).json({error: error.message}); // si hay un error mostramos un mensaje en consola 
+        }
+    }
 }
 export default CategoriaController; // exportamos la clase CategoriaController para usarla en app.js

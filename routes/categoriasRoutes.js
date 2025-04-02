@@ -1,5 +1,6 @@
 import express from 'express'; // importamos express para declara rutas
 import CategoriaController from '../controller/categoriaController.js';
+import validarCategoria from '../middlewares/validarCategoria.js'; // importamos el middleware para validar la categoria
 
 const router = express.Router(); // creamos una constante router que es igual a express.Router() para crear rutas
 
@@ -10,8 +11,9 @@ router.get('/',CategoriaController.getAllCategorias);
 
 // --------------------------------------------------------------------
 
-router.post('/',CategoriaController.createCategoria); // creamos la ruta para crear una categoria}
+router.post('/',validarCategoria,CategoriaController.createCategoria); // creamos la ruta para crear una categoria}
 
+router.put('/:id',CategoriaController.actulizarCategoria); // creamos la ruta para actualizar una categoria
 
 
 
