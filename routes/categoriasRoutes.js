@@ -16,11 +16,7 @@ router.post('/',validarCategoria,CategoriaController.createCategoria); // creamo
 router.put('/:id',CategoriaController.actulizarCategoria); // creamos la ruta para actualizar una categoria
 
 
-
-router.put('/:id',(req,res)=>{
-    console.log(req.body); 
-    res.json("hi"); // devolvemos lo que se envia desde postman
-});
+router.patch('/:id',CategoriaController.actualizarParcial); // creamos la ruta para actualizar una categoria
 
 
 export default router; // exportamos el router para usarlo en app.js
