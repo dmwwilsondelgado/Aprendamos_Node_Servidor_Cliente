@@ -36,5 +36,38 @@ class Categoria{
       throw new Error("ERROR: Al Actualizar la categoria");
     }
   }
+
+  async updateParcial(campos,id) {
+    try {
+      let sql = "UPDATE categorias SET ";
+      for (let cont = 0; cont < Object.keys(campos).length; cont++) {
+        let value = Object.keys(campos)[cont];
+        sql += `${value} = '${campos[value]}'`;
+        if (cont == Object.keys(campos).length - 1) {
+          sql += "";
+        }
+        else {
+          sql += ",";
+        }
+      }
+      sql += ` WHERE id = ${id}`;
+      const [result] = await connection.query(sql);
+      if (result.affectedRows === 0) { throw new Error("Categoria no encontrada"); }
+      return { mensaje: "Categoria Actualizada" }
+    } catch (error) {
+      throw new Error("ERROR: Al Actualizar la categoria parcialmente");
+    }
+  }
+  async delete(id) {
+    try {
+      const [result] = await connection.query("DELETE FROM categorias WHERE id = ?",[id]);
+      if (result.affectedRows === 0) {
+        throw new Error("Categoria no encontrada");
+      }
+      return { mensaje: "Categoria Eliminada con Exito" }
+    } catch (error) {
+      throw new Error("ERROR: Al Eliminar la categoria");
+    }
+  }
 }
 export default Categoria;

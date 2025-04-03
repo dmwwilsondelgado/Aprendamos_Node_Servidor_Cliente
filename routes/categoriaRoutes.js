@@ -9,7 +9,8 @@ router.post('/',validarCategoria, CategoriaController.createCategoria)
 
 router.put('/:id', CategoriaController.updateCategoria);
 
-// router.patch('/:id',CategoriaController.actualizarParcial); // creamos la ruta para actualizar una categoria
+router.patch('/:id', CategoriaController.updateParcialCategoria);
 
+router.delete('/:id', CategoriaController.deleteCategoria);
 
-export default router; // exportamos el router para usarlo en app.js
+export default router;
